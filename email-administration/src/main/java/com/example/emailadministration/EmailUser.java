@@ -6,14 +6,14 @@ public class EmailUser {
     private int idUser;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String login;
     private String password;
     private String emailAddress;
     private String secretQuestion;
     private String secretQuestionAnswer;
 
-    EmailUser(String firstName, String lastName, Date dateOfBirth,
+    EmailUser(String firstName, String lastName, String dateOfBirth,
               String login, String password, String emailAddress,
               String secretQuestion, String secretQuestionAnswer) {
         this.firstName=firstName;
@@ -27,6 +27,6 @@ public class EmailUser {
     }
 
     public String getQueryFormat() {
-        return "i like boobs";
+        return firstName;
     }
 }

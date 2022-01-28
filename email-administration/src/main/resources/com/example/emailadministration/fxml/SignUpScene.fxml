@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" vvalue="1.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emailadministration.SignUpSceneController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emailadministration.SignUpSceneController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="1280.0">
          <children>
@@ -66,12 +66,12 @@
                         <Font size="13.0" />
                      </font>
                   </CheckBox>
-                  <Button fx:id="signUpButton" layoutX="74.0" layoutY="620.0" maxHeight="35.0" maxWidth="210.0" minHeight="35.0" minWidth="210.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="35.0" prefWidth="210.0" text="SIGN UP">
+                  <Button fx:id="signUpButton" layoutX="74.0" layoutY="640.0" maxHeight="35.0" maxWidth="210.0" minHeight="35.0" minWidth="210.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="35.0" prefWidth="210.0" text="SIGN UP">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Hyperlink fx:id="logInHyperLink" layoutX="91.0" layoutY="675.0" prefHeight="29.0" prefWidth="217.0" text="Have an acount? Log in">
+                  <Hyperlink fx:id="logInHyperLink" layoutX="92.0" layoutY="718.0" prefHeight="29.0" prefWidth="217.0" text="Have an acount? Log in">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -87,6 +87,11 @@
                      </font>
                   </Label>
                   <Label fx:id="invalidEmailErrorLabel" alignment="TOP_LEFT" layoutX="317.0" layoutY="402.0" prefHeight="82.0" prefWidth="173.0" textFill="RED">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="signinErrorLabel" alignment="TOP_LEFT" layoutX="63.0" layoutY="601.0" prefHeight="24.0" prefWidth="274.0" textFill="RED">
                      <font>
                         <Font size="15.0" />
                      </font>
