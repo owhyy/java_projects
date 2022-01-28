@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" vvalue="1.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emailadministration.SignUpSceneController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane fx:id="inputAnchorPane" layoutX="464.0" layoutY="127.0">
+               <children>
+                  <Label fx:id="createAnAccountLabel" prefHeight="75.0" prefWidth="375.0" text="Create an account">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="firstNameTextField" layoutX="74.0" layoutY="105.0" prefHeight="35.0" prefWidth="210.0" promptText="First name">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="lastNameTextField" layoutX="74.0" layoutY="155.0" prefHeight="35.0" prefWidth="210.0" promptText="Last name">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="dateOfBirthTextField" layoutX="74.0" layoutY="205.0" prefHeight="35.0" prefWidth="210.0" promptText="Date of birth">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="usernameTextField" layoutX="74.0" layoutY="255.0" prefHeight="35.0" prefWidth="210.0" promptText="Username">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="passwordTextField" layoutX="74.0" layoutY="305.0" prefHeight="35.0" prefWidth="210.0" promptText="Password">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="emailAddressTextField" layoutX="74.0" layoutY="355.0" prefHeight="35.0" prefWidth="210.0" promptText="Email address">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="secretQuestionTextField" alignment="TOP_LEFT" layoutX="74.0" layoutY="405.0" prefHeight="100.0" prefWidth="210.0" promptText="Enter a secret question">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="secretQuestionAnswerTextField" layoutX="74.0" layoutY="520.0" prefHeight="35.0" prefWidth="210.0" promptText="Answer to question">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <CheckBox fx:id="iAgreeCheckBox" layoutX="69.0" layoutY="570.0" mnemonicParsing="false" text="I agree to selling my soul to satan">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </CheckBox>
+                  <Button fx:id="signUpButton" layoutX="74.0" layoutY="620.0" maxHeight="35.0" maxWidth="210.0" minHeight="35.0" minWidth="210.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="35.0" prefWidth="210.0" text="SIGN UP">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Hyperlink fx:id="logInHyperLink" layoutX="91.0" layoutY="675.0" prefHeight="29.0" prefWidth="217.0" text="Have an acount? Log in">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Button fx:id="validEmailButton" layoutX="317.0" layoutY="355.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Valid?">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="validEmailLabel" alignment="TOP_LEFT" layoutX="317.0" layoutY="402.0" prefHeight="82.0" prefWidth="173.0" textFill="#1c5d99">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="invalidEmailErrorLabel" alignment="TOP_LEFT" layoutX="317.0" layoutY="402.0" prefHeight="82.0" prefWidth="173.0" textFill="RED">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="successAnchorPane" layoutX="42.0" layoutY="136.0" prefHeight="726.0" prefWidth="1203.0" visible="false">
+               <children>
+                  <Rectangle fx:id="successRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="417.0" layoutX="208.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="809.0" />
+                  <Hyperlink fx:id="successHyperLink" layoutX="318.0" layoutY="321.0" text="Account created succesfully. Click to go back">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

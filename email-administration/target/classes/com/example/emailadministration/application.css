@@ -1,14 +1,30 @@
+@font-face {
+    src: url('fonts/HelveticaNeuBold.ttf');
+}
+
+@font-face {
+    src: url('fonts/HelveticaNeueMedium.ttf');
+}
+
 .root {
-    -fx-background-color: #222222;
+    /*-fx-background-color: #222222;*/
 }
 
-.label {
-    -fx-font-size: 20;
-    -fx-font-family: "Sauce Code Pro Black Nerd Font Complete Mono";
-    -fx-text-fill: #ffffff;
-    -fx-alignment: center;
-}
+/*
+#loginButton {
+    -fx-border-radius: 12 px;
+}*/
 
-#titleLabel {
+/*
+#loginTextField:placeholder{
+   -fx-color: #ffffff;
+ }
 
+ */
+
+/*#loginTextField {
+    -fx-border: 2px solid #ffffff;
+    -fx-border-radius: 4px;
+    -fx-background-color: #ffffff;
 }
+*/
