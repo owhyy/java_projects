@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import org.jdbi.v3.core.Jdbi;
@@ -61,7 +63,8 @@ public class SignUpSceneController {
 
 
     public void handleButtonClick(ActionEvent event) throws IOException {
-        System.out.println("Button clicked");
+        // if fields are full and data inside them is valid, create a sql instruction
+        inputAnchorPane.setEffect(new GaussianBlur(10.5));
     }
 
     public void createUser() {
