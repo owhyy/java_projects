@@ -10,16 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.util.Pair;
-import org.controlsfx.control.action.Action;
-import java.io.DataInput;
 import java.io.IOException;
-import java.util.List;
 
 public class MainSceneController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
     @FXML
     ImageView messageIcon;
     @FXML

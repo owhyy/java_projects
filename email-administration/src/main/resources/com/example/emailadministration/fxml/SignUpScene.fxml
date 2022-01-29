@@ -66,17 +66,17 @@
                         <Font size="13.0" />
                      </font>
                   </CheckBox>
-                  <Button fx:id="signUpButton" layoutX="74.0" layoutY="640.0" maxHeight="35.0" maxWidth="210.0" minHeight="35.0" minWidth="210.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="35.0" prefWidth="210.0" text="SIGN UP">
+                  <Button fx:id="signUpButton" layoutX="74.0" layoutY="640.0" maxHeight="35.0" maxWidth="210.0" minHeight="35.0" minWidth="210.0" mnemonicParsing="false" onAction="#handleSignInButtonClick" prefHeight="35.0" prefWidth="210.0" text="SIGN UP">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Hyperlink fx:id="logInHyperLink" layoutX="92.0" layoutY="718.0" prefHeight="29.0" prefWidth="217.0" text="Have an acount? Log in">
+                  <Hyperlink fx:id="logInHyperLink" layoutX="92.0" layoutY="718.0" prefHeight="29.0" prefWidth="217.0" text="Have an acount? Log in" onAction="#handleLogInHyperlink">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Hyperlink>
-                  <Button fx:id="validEmailButton" layoutX="317.0" layoutY="355.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Valid?">
+                  <Button fx:id="checkEmailButton" layoutX="317.0" layoutY="355.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Valid?" onAction="#handleCheckEmailButton">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -101,7 +101,7 @@
             <AnchorPane fx:id="successAnchorPane" layoutX="42.0" layoutY="136.0" prefHeight="726.0" prefWidth="1203.0" visible="false">
                <children>
                   <Rectangle fx:id="successRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="417.0" layoutX="208.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="809.0" />
-                  <Hyperlink fx:id="successHyperLink" layoutX="318.0" layoutY="321.0" text="Account created succesfully. Click to go back">
+                  <Hyperlink fx:id="successHyperLink" layoutX="318.0" layoutY="321.0" text="Account created succesfully. Click to go back" onAction="#handleLogInHyperlink">
                      <font>
                         <Font size="28.0" />
                      </font>

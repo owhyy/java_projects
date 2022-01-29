@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.GaussianBlur;
@@ -22,6 +23,7 @@ import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.LabeledMatchers;
+import org.testfx.matcher.control.TextMatchers;
 import org.testfx.util.WaitForAsyncUtils;
 
 import java.awt.*;
@@ -83,6 +85,7 @@ class SignUpSceneControllerTest extends ApplicationTest {
         clickOn("#secretQuestionTextField").write("test");
         clickOn("#secretQuestionAnswerTextField").write("test");
         clickOn("#iAgreeCheckBox");
+        clickOn("#checkEmailButton");
         clickOn("#signUpButton");
         FxAssert.verifyThat("#successAnchorPane", (AnchorPane a) -> a.isVisible());
     }
@@ -99,13 +102,28 @@ class SignUpSceneControllerTest extends ApplicationTest {
         clickOn("#firstNameTextField").write("test");
         clickOn("#iAgreeCheckBox");
         clickOn("#signUpButton");
-        FxAssert.verifyThat("#signinErrorLabel", LabeledMatchers.hasText("You need to enter data to all of the fields!"));
+        FxAssert.verifyThat("#signinErrorLabel", LabeledMatchers.hasText("Fields cannot be empty!"));
     }
 
     @Test
     public void signin_clicked_labels_empty_checkbox_empty() throws Exception {
         clickOn("#signUpButton");
-        FxAssert.verifyThat("#signinErrorLabel", LabeledMatchers.hasText("You need to enter data to all of the fields!"));
+        FxAssert.verifyThat("#signinErrorLabel", LabeledMatchers.hasText("Fields cannot be empty!"));
+    }
+
+    @Test
+    public void signin_clicked_email_not_checked() throws Exception {
+        clickOn("#firstNameTextField").write("test");
+        clickOn("#lastNameTextField").write("test");
+        clickOn("#dateOfBirthTextField").write("test");
+        clickOn("#usernameTextField").write("test");
+        clickOn("#passwordTextField").write("test");
+        clickOn("#emailAddressTextField").write("test");
+        clickOn("#secretQuestionTextField").write("test");
+        clickOn("#secretQuestionAnswerTextField").write("test");
+        clickOn("#iAgreeCheckBox");
+        clickOn("#signUpButton");
+        FxAssert.verifyThat("#signinErrorLabel", LabeledMatchers.hasText("You need to check if your email is available first!"));
     }
 
    @Test
@@ -130,4 +148,58 @@ class SignUpSceneControllerTest extends ApplicationTest {
 
        Assertions.assertEquals(queryResult, 1);
     }
+
+    // somehow verify that the scene has changed, I don't know how
+    //    @Test
+//    public void have_an_account_pressed_go_back_to_main_scene() throws Exception {
+//        FxRobot robot = new FxRobot();
+//        Hyperlink hl = (Hyperlink)robot.lookup("#logInHyperLink") ;
+//        clickOn("#logInHyperLink");
+//        Stage stage;
+//        Scene scene;
+//        Parent root = FXMLLoader.load(getClass().getResource("fxml/MainScene.fxml"));
+//        stage = (Stage)hl.getScene().getWindow();
+//        scene = new Scene(root);
+//
+//       FxAssert.verifyThat();
+//   }
+
+    @Test
+    public void email_empty_check_pressed() {
+        clickOn("#checkEmailButton");
+        FxAssert.verifyThat("#invalidEmailErrorLabel", TextMatchers.hasText("We can't check an empty field"));
+   }
+
+    @Test
+    public void email_nonexistent_check_pressed() {
+        clickOn("#emailAddressTextField").write("testemail");
+        clickOn("#checkEmailButton");
+        FxAssert.verifyThat("#validEmailLabel", TextMatchers.hasText("Looks good!"));
+    }
+
+    @Test
+    public void email_existent_check_pressed() {
+        clickOn("#emailAddressTextField").write("testemail");
+        jdbi.useHandle(handle ->
+                handle.createUpdate("INSERT INTO users(FirstName, LastName, DateOfBirth, Login, Password," +
+                                " EmailAddress, SecretQuestion, SecretQuestionAnswer)" +
+                                "VALUES (:firstname, :lastname, :dob, :login, :password, :email, :sq, :sqa)")
+                        .bind("firstname", "test")
+                        .bind("lastname", "test")
+                        .bind("dob", "1990-01-01")
+                        .bind("login", "test")
+                        .bind("password", "test")
+                        .bind("email", "testemail")
+                        .bind("sq", "test")
+                        .bind("sqa", "boobs")
+                        .execute());
+
+        clickOn("#checkEmailButton");
+
+        jdbi.useHandle(handle -> handle.execute("DELETE FROM users WHERE Login = 'test'"));
+
+        FxAssert.verifyThat("#invalidEmailErrorLabel", TextMatchers.hasText("An account with this email already exists"));
+    }
+
+
 }
