@@ -101,7 +101,7 @@
             <AnchorPane fx:id="successAnchorPane" layoutX="42.0" layoutY="136.0" prefHeight="726.0" prefWidth="1203.0" visible="false">
                <children>
                   <Rectangle fx:id="successRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="417.0" layoutX="208.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="809.0" />
-                  <Hyperlink fx:id="successHyperLink" layoutX="318.0" layoutY="321.0" text="Account created succesfully. Click to go back" onAction="#handleLogInHyperlink">
+                  <Hyperlink fx:id="successHyperLink" layoutX="318.0" layoutY="321.0" text="Account created successfully. Click to go back" onAction="#handleLogInHyperlink">
                      <font>
                         <Font size="28.0" />
                      </font>

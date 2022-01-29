@@ -22,6 +22,7 @@ import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
+import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.LabeledMatchers;
 import org.testfx.matcher.control.TextMatchers;
 import org.testfx.util.WaitForAsyncUtils;
@@ -149,20 +150,32 @@ class SignUpSceneControllerTest extends ApplicationTest {
        Assertions.assertEquals(queryResult, 1);
     }
 
-    // somehow verify that the scene has changed, I don't know how
-    //    @Test
-//    public void have_an_account_pressed_go_back_to_main_scene() throws Exception {
-//        FxRobot robot = new FxRobot();
-//        Hyperlink hl = (Hyperlink)robot.lookup("#logInHyperLink") ;
-//        clickOn("#logInHyperLink");
-//        Stage stage;
-//        Scene scene;
-//        Parent root = FXMLLoader.load(getClass().getResource("fxml/MainScene.fxml"));
-//        stage = (Stage)hl.getScene().getWindow();
-//        scene = new Scene(root);
-//
-//       FxAssert.verifyThat();
-//   }
+    // TODO: check on desktop if this works
+    @Test
+    public void have_an_account_pressed_go_back_to_main_scene() throws Exception {
+        clickOn("#logInHyperLink");
+        FxAssert.verifyThat("#logInButton", NodeMatchers.isVisible());
+   }
+
+    // TODO: check on desktop if this works
+    @Test
+    public void account_succes_go_back() throws Exception {
+        clickOn("#logInHyperLink");
+        clickOn("#firstNameTextField").write("test");
+        clickOn("#lastNameTextField").write("test");
+        clickOn("#dateOfBirthTextField").write("test");
+        clickOn("#usernameTextField").write("test");
+        clickOn("#passwordTextField").write("test");
+        clickOn("#emailAddressTextField").write("test");
+        clickOn("#secretQuestionTextField").write("test");
+        clickOn("#secretQuestionAnswerTextField").write("test");
+        clickOn("#iAgreeCheckBox");
+        clickOn("#checkEmailButton");
+        clickOn("#signUpButton");
+
+        clickOn("#successHyperLink");
+        FxAssert.verifyThat("#logInButton", NodeMatchers.isVisible());
+    }
 
     @Test
     public void email_empty_check_pressed() {
