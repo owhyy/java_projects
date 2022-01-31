@@ -1,6 +1,8 @@
 package com.example.emailadministration;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,11 +22,14 @@ public class SignUpSceneController {
     private Scene scene;
 
     boolean emailWasChecked=false;
-
+    @FXML
+    ScrollPane scrollPane;
     @FXML
     AnchorPane inputAnchorPane;
     @FXML
     AnchorPane successAnchorPane;
+    @FXML
+    AnchorPane mainSignupAnchorPane;
 
     @FXML
     Rectangle successRectangle;
@@ -47,7 +52,7 @@ public class SignUpSceneController {
     @FXML
     TextField usernameTextField;
     @FXML
-    TextField passwordTextField;
+    TextField signupPasswordTextField;
     @FXML
     TextField emailAddressTextField;
     @FXML
@@ -68,10 +73,28 @@ public class SignUpSceneController {
     @FXML
     Hyperlink logInHyperLink;
 
+    // setting faster scroll
+    // see https://stackoverflow.com/a/59372510
+    @FXML
+    public void initialize() {
+        // this is needed to avoid the text resizing when clicking on the screen bug
+        // see https://stackoverflow.com/a/65890967
+        mainSignupAnchorPane.setOnMousePressed(Event::consume);
+        Platform.runLater(() -> setFasterScroller(scrollPane));
+    }
+
+    private static void setFasterScroller(ScrollPane scrollPane) {
+        final double SPEED = 0.01;
+        scrollPane.getContent().setOnScroll(scrollEvent -> {
+            double deltaY = scrollEvent.getDeltaY() * SPEED;
+            scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
+        });
+    }
+
     private boolean allFieldsFilled() {
         return !(firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty()
                 || emailAddressTextField.getText().isEmpty() || usernameTextField.getText().isEmpty()
-                || passwordTextField.getText().isEmpty() || dateOfBirthTextField.getText().isEmpty()
+                || signupPasswordTextField.getText().isEmpty() || dateOfBirthTextField.getText().isEmpty()
                 || secretQuestionAnswerTextField.getText().isEmpty() || secretQuestionTextField.getText().isEmpty());
     }
 
@@ -79,6 +102,7 @@ public class SignUpSceneController {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/MainScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        scene.getStylesheets().addAll(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -91,7 +115,7 @@ public class SignUpSceneController {
             Jdbi jdbi = databaseConnection.getJdbi();
 
             int queryResult = jdbi.withHandle(handle ->
-                    handle.createQuery("SELECT count(1) FROM users WHERE Email = ?")
+                    handle.createQuery("SELECT count(1) FROM users WHERE EmailAddress = ?")
                             .bind(0, emailAddressTextField.getText())
                             .mapTo(Integer.class)
                             .one());
@@ -122,7 +146,7 @@ public class SignUpSceneController {
                         .bind("lastname", lastNameTextField.getText())
                         .bind("dob", dateOfBirthTextField.getText())
                         .bind("login", usernameTextField.getText())
-                        .bind("password",passwordTextField.getText())
+                        .bind("password", signupPasswordTextField.getText())
                         .bind("email", emailAddressTextField.getText())
                         .bind("sq", secretQuestionTextField.getText())
                         .bind("sqa", secretQuestionAnswerTextField.getText())

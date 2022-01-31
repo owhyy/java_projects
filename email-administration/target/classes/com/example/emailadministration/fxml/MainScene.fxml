@@ -11,21 +11,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emailadministration.MainSceneController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emailadministration.MainSceneController">
    <children>
-      <PasswordField fx:id="passwordTextField" layoutX="535.0" layoutY="390.0" prefHeight="35.0" prefWidth="210.0" promptText="Password">
+      <PasswordField fx:id="passwordTextField" layoutX="535.0" layoutY="395.0" prefHeight="35.0" prefWidth="210.0" promptText="Password">
          <font>
             <Font size="15.0" />
          </font>
       </PasswordField>
-      <TextField fx:id="loginTextField" layoutX="535.0" layoutY="340.0" prefHeight="35.0" prefWidth="210.0" promptText="Login">
+      <TextField fx:id="loginTextField" layoutX="535.0" layoutY="335.0" prefHeight="35.0" prefWidth="210.0" promptText="Login">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="535.0" layoutY="457.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLoginButtonPressed" prefHeight="35.0" prefWidth="210.0" text="LOG IN" textOverrun="WORD_ELLIPSIS">
+      <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="535.0" layoutY="457.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLoginButtonPressed" prefHeight="42.0" prefWidth="210.0" text="LOG IN" textOverrun="WORD_ELLIPSIS">
          <font>
-            <Font size="15.0" />
+            <Font size="16.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

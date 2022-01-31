@@ -6,25 +6,162 @@
     src: url('fonts/HelveticaNeueMedium.ttf');
 }
 
-.root {
-    /*-fx-background-color: #222222;*/
+#anchorPane {
+    -fx-background-color: #222222;
 }
 
-/*
+#mainSignupAnchorPane {
+    -fx-background-color: #222222;
+}
+
+#scrollPane {
+    -fx-background-color: #222222;
+}
+
+#forgotPasswordAnchorPane {
+    -fx-background-color: #222222;
+}
+
+.label {
+    -fx-font-family: 'HelveticaNeue';
+}
+
+#createAnAccountLabel {
+    -fx-font-family: 'HelveticaNeue Bold';
+    -fx-text-fill: #1c5d99;
+}
+
+.text-field {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #1c5d99;
+    -fx-border-width: 2px;
+    -fx-font-family: 'HelveticaNeue';
+    -fx-font-size: 16px;
+    -fx-text-fill: #eeeeee;
+}
+
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color: #1c5d99;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.check-box {
+    -fx-font-family: 'HelveticaNeue';
+    -fx-text-fill: #eeeeee;
+    -fx-font-size: 14px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #eeeeee;
+}
+
+.check-box:hover .box {
+    -fx-background-color: #164979;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #1c5d99;
+}
+
+#signUpButton {
+    -fx-background-color: #1c5d99;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-text-fill: #eeeeee;
+    -fx-font-family: 'HelveticaNeue Bold';
+    -fx-font-size: 18px;
+}
+
+#signUpButton:hover {
+    -fx-background-color: #164979;
+}
+
+#checkEmailButton {
+    -fx-background-color: #1c5d99;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-text-fill: #eeeeee;
+    -fx-font-family: 'HelveticaNeue';
+    -fx-font-size: 18px;
+}
+
+#checkEmailButton:hover {
+    -fx-background-color: #164979;
+}
+
 #loginButton {
-    -fx-border-radius: 12 px;
-}*/
-
-/*
-#loginTextField:placeholder{
-   -fx-color: #ffffff;
- }
-
- */
-
-/*#loginTextField {
-    -fx-border: 2px solid #ffffff;
-    -fx-border-radius: 4px;
-    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+    -fx-background-color: #1c5d99;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-text-fill: #eeeeee;
+    -fx-font-family: 'HelveticaNeue Bold';
+    -fx-font-size: 18px;
 }
-*/
+
+#loginButton:hover {
+    -fx-background-color: #164979;
+}
+
+#forgotPasswordNextButton {
+    -fx-padding: 10px;
+    -fx-background-color: #1c5d99;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-text-fill: #eeeeee;
+    -fx-font-family: 'HelveticaNeue Bold';
+    -fx-font-size: 18px;
+}
+
+#forgotPasswordNextButton:hover {
+    -fx-background-color: #164979;
+}
+
+
+.hyperlink {
+    -fx-text-fill: #eeeeee;
+    -fx-font-family: 'HelveticaNeue';
+    -fx-font-size: 14px;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
+    -fx-text-fill: #1c5d99;
+    -fx-font-family: 'HelveticaNeue Bold';
+    -fx-font-size: 14px;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+	-fx-border-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 15 0 0;
+}
+
+.scroll-bar:vertical .track {
+	-fx-background-color:transparent;
+	-fx-border-color:transparent;
+	-fx-background-radius: 0em;
+	-fx-border-radius:2em;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+	-fx-shape: " ";
+	-fx-padding:0;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #1c5d99;
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 10px;
+}

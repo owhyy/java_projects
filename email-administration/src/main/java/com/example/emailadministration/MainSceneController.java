@@ -1,5 +1,6 @@
 package com.example.emailadministration;
 
+import javafx.scene.layout.AnchorPane;
 import org.jdbi.v3.core.Jdbi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,17 +17,24 @@ public class MainSceneController {
     private Stage stage;
     private Scene scene;
     @FXML
+    AnchorPane anchorPane;
+
+    @FXML
     ImageView messageIcon;
+
     @FXML
     Button loginButton;
+
     @FXML
     TextField loginTextField;
     @FXML
     PasswordField passwordTextField;
+
     @FXML
     Hyperlink forgotPasswordLink;
     @FXML
     Hyperlink createAccountLink;
+
     @FXML
     Label errorLabel;
 
@@ -34,6 +42,7 @@ public class MainSceneController {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        scene.getStylesheets().addAll(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -53,18 +62,14 @@ public class MainSceneController {
     public void handleLoginButtonPressed(ActionEvent event) throws IOException {
         String loginTextFieldInput = loginTextField.getText();
         String passwordTextFieldInput = passwordTextField.getText();
-        // Stage stage = (Stage) loginButton.getScene().getWindow();
         if (loginTextFieldInput.isEmpty() || passwordTextFieldInput.isEmpty()) {
-            errorLabel.setText("Data you entered is not valid. Try again.");
-        } else if (validateLogin()) {
-            // XXX not sure that is is correct
-            switchToMessageViewScene(event);
+            errorLabel.setText("Fields cannot be empty!");
         } else {
-            errorLabel.setText("The account you tried to enter does not exist. Sign up instead.");
+            validateLogin(event);
         }
     }
 
-    public boolean validateLogin() {
+    public void validateLogin(ActionEvent event) throws IOException {
         UserDatabaseConnection userDatabaseConnection = new UserDatabaseConnection();
         Jdbi jdbi = userDatabaseConnection.getJdbi();
 
@@ -74,8 +79,11 @@ public class MainSceneController {
                         .bind(1, passwordTextField.getText())
                         .mapTo(Integer.class)
                         .one());
-
-        return queryResult==1;
+        if (queryResult==1) {
+            switchToMessageViewScene(event);
+        } else {
+            errorLabel.setText("The account you tried to enter does not exist. Sign up instead.");
+        }
     }
 
     public void handleForgotPasswordPressed() {
