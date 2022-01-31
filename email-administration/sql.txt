@@ -1,0 +1,16 @@
+CREATE DATABASE `email_app_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+CREATE TABLE `users` (
+  `idUser` int NOT NULL AUTO_INCREMENT,
+  `FirstName` varchar(45) NOT NULL,
+  `LastName` varchar(45) NOT NULL,
+  `DateOfBirth` date NOT NULL,
+  `Login` varchar(45) NOT NULL,
+  `Password` varchar(45) NOT NULL,
+  `EmailAddress` varchar(45) NOT NULL,
+  `SecretQuestion` text NOT NULL,
+  `SecretQuestionAnswer` varchar(45) NOT NULL,
+  PRIMARY KEY (`idUser`),
+  UNIQUE KEY `idCustomers_UNIQUE` (`idUser`),
+  UNIQUE KEY `EmailAddress_UNIQUE` (`EmailAddress`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
