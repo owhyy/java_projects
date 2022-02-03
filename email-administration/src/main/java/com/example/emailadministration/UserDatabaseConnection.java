@@ -6,7 +6,8 @@ public class UserDatabaseConnection {
     public Jdbi jdbi;
 
     public Jdbi getJdbi() {
-        jdbi = Jdbi.create("jdbc:mysql://localhost:3306/email_app_db", "root", "Topimpabutterfly1");
+        //jdbi = Jdbi.create("jdbc:mysql://localhost:3306/email_app_db", "root", "Topimpabutterfly1");
+        jdbi = Jdbi.create("jdbc:mysql://localhost:3306/email_app_db", "vanya", "1234");
         return jdbi;
     }
 }
