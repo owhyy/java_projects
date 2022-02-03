@@ -131,7 +131,6 @@ class ForgotPasswordSceneControllerTest extends ApplicationTest {
     public void default_behaviour_success_pane_invisible() {
         FxAssert.verifyThat("#forgotPasswordMainAnchorPane", NodeMatchers.isVisible());
         FxAssert.verifyThat("#forgotPasswordInputAnchorPane", NodeMatchers.isVisible());
-        FxAssert.verifyThat("#forgotPasswordSuccessAnchorPane", NodeMatchers.isInvisible());
     }
 
     @Test
@@ -144,7 +143,6 @@ class ForgotPasswordSceneControllerTest extends ApplicationTest {
         delete_test_user();
         FxAssert.verifyThat("#forgotPasswordMainAnchorPane", NodeMatchers.isVisible());
         FxAssert.verifyThat("#forgotPasswordInputAnchorPane", NodeMatchers.isVisible());
-        FxAssert.verifyThat("#forgotPasswordSuccessAnchorPane", NodeMatchers.isVisible());
     }
 
     // still can't figure out how to check for effects
@@ -158,5 +156,12 @@ class ForgotPasswordSceneControllerTest extends ApplicationTest {
 //        verifyThat("#forgotPasswordAnchorPane", (AnchorPane a) -> a.getEffect().equals(new GaussianBlur(10.5)));
 //        delete_test_user();
 //    }
+
+    @Test
+    public void go_back_hyperlink_pressed() {
+        clickOn("#forgotPasswordBackHyperlink");
+        FxAssert.verifyThat("#loginButton", NodeMatchers.isVisible());
+    }
+
 
 }

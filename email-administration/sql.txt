@@ -14,3 +14,6 @@ CREATE TABLE `users` (
   UNIQUE KEY `idCustomers_UNIQUE` (`idUser`),
   UNIQUE KEY `EmailAddress_UNIQUE` (`EmailAddress`)
 );
+
+INSERT INTO users(FirstName, LastName, DateOfBirth, Login, Password, EmailAddress, SecretQuestion, SecretQuestionAnswer) VALUES
+('John', 'Doe', '2004-01-10', 'johndoe', 'reallycool', 'johndoe@bestemail4eva.com', 'First dog name', 'None');
