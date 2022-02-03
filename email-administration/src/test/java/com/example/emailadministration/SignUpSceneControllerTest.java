@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
@@ -15,14 +14,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxAssert;
-import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.LabeledMatchers;
-import org.testfx.util.WaitForAsyncUtils;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.testfx.api.FxAssert.verifyThat;
 
@@ -107,7 +102,7 @@ class SignUpSceneControllerTest extends ApplicationTest {
 //    }
 
     @Test
-    public void should_set_second_anchorpane_as_primary() throws Exception {
+    public void should_set_box_and_success_hyperlink_visible() throws Exception {
         clickOn("#firstNameTextField").write("test");
         clickOn("#lastNameTextField").write("test");
         clickOn("#dateOfBirthTextField").write("1900-01-01");
@@ -121,7 +116,8 @@ class SignUpSceneControllerTest extends ApplicationTest {
         clickOn("#signUpButton");
 
         delete_test_user();
-        verifyThat("#successAnchorPane", (AnchorPane a) -> a.isVisible());
+        verifyThat("#successRectangle", NodeMatchers.isVisible());
+        verifyThat("#successHyperLink", NodeMatchers.isVisible());
     }
 
     @Test

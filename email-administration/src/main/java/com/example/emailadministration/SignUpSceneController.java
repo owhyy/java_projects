@@ -18,16 +18,12 @@ import org.jdbi.v3.core.Jdbi;
 import java.io.IOException;
 
 public class SignUpSceneController {
-    private Stage stage;
-    private Scene scene;
 
     boolean emailWasChecked=false;
     @FXML
     ScrollPane scrollPane;
     @FXML
     AnchorPane inputAnchorPane;
-    @FXML
-    AnchorPane successAnchorPane;
     @FXML
     AnchorPane mainSignupAnchorPane;
 
@@ -51,6 +47,8 @@ public class SignUpSceneController {
     TextField dateOfBirthTextField;
     @FXML
     TextField usernameTextField;
+
+    // TODO: this shouold be a passwordfield, not a textfield
     @FXML
     TextField signupPasswordTextField;
     @FXML
@@ -100,8 +98,8 @@ public class SignUpSceneController {
 
     public void handleLogInHyperlink(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/MainScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         scene.getStylesheets().addAll(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
@@ -160,7 +158,8 @@ public class SignUpSceneController {
                 if (emailWasChecked) {
                     createAccount();
                     inputAnchorPane.setEffect(new GaussianBlur(10.5));
-                    successAnchorPane.setVisible(true);
+                    successRectangle.setVisible(true);
+                    successHyperLink.setVisible(true);
                 } else { signinErrorLabel.setText("You need to check if your email is available first!"); }
             } else { signinErrorLabel.setText("That won't work! You need to agree!"); }
         } else {  signinErrorLabel.setText("Fields cannot be empty!"); }

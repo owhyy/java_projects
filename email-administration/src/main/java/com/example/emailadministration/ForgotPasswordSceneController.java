@@ -42,6 +42,8 @@ public class ForgotPasswordSceneController {
 
     @FXML
     Hyperlink forgotPasswordBackHyperlink;
+
+    // TODO: position it correctly inside the rectangle, size accordingly
     @FXML
     Hyperlink forgotPasswordSuccessHyperlink;
 
@@ -50,6 +52,7 @@ public class ForgotPasswordSceneController {
     @FXML
     Label forgotPasswordErrorLabel;
 
+    // TODO: change color
     @FXML
     Rectangle forgotPasswordSuccessRectangle;
 
@@ -124,6 +127,7 @@ public class ForgotPasswordSceneController {
         moveToMainScene(event);
     }
 
+    // TODO:
     public void handleSuccesGoBackHyperlinkClicked(ActionEvent event) throws IOException {
         moveToMainScene(event);
     }

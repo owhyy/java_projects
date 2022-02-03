@@ -109,6 +109,6 @@ class MainSceneControllerTest extends ApplicationTest {
     @Test
     public void forgot_password_clicked() {
         clickOn("#forgotPasswordLink");
-        FxAssert.verifyThat("#forgotPasswordAnchorPane", NodeMatchers.isVisible());
+        FxAssert.verifyThat("#forgotPasswordMainAnchorPane", NodeMatchers.isVisible());
     }
 }
