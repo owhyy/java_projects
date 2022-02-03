@@ -15,7 +15,7 @@
   <content>
     <AnchorPane fx:id="mainSignupAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="1280.0">
          <children>
-            <AnchorPane fx:id="inputAnchorPane" layoutX="445.0" layoutY="126.0" prefHeight="747.0" prefWidth="571.0">
+            <AnchorPane fx:id="inputAnchorPane" layoutX="445.0" layoutY="126.0" prefHeight="747.0" prefWidth="605.0">
                <children>
                   <Label fx:id="createAnAccountLabel" layoutY="19.0" prefHeight="75.0" prefWidth="550.0" scaleShape="false" text="Create an account">
                      <font>
@@ -108,16 +108,12 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="successAnchorPane" layoutX="42.0" layoutY="136.0" prefHeight="726.0" prefWidth="1203.0" visible="false">
-               <children>
-                  <Rectangle fx:id="successRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="417.0" layoutX="208.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="809.0" />
-                  <Hyperlink fx:id="successHyperLink" layoutX="318.0" layoutY="321.0" onAction="#handleLogInHyperlink" text="Account created successfully. Click to go back">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Hyperlink>
-               </children>
-            </AnchorPane>
+            <Rectangle fx:id="successRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" layoutX="315.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="650.0" />
+            <Hyperlink fx:id="successHyperLink" layoutX="366.0" layoutY="399.0" onAction="#handleLogInHyperlink" text="Account created successfully. Click to go back" visible="false">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Hyperlink>
          </children></AnchorPane>
   </content>
 </ScrollPane>
