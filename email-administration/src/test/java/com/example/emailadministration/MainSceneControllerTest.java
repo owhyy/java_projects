@@ -111,4 +111,10 @@ class MainSceneControllerTest extends ApplicationTest {
         clickOn("#forgotPasswordLink");
         FxAssert.verifyThat("#forgotPasswordMainAnchorPane", NodeMatchers.isVisible());
     }
+
+    @Test
+    public void test_enter_pressed() {
+        press(KeyCode.ENTER);
+        FxAssert.verifyThat("#errorLabel", LabeledMatchers.hasText("Fields cannot be empty!"));
+    }
 }

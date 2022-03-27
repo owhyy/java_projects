@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -37,6 +39,7 @@ public class ForgotPasswordSceneController {
     @FXML
     TextField forgotPasswordSecretQuestionAnswerTextField;
 
+    // TODO: modify clickbox
     @FXML
     Button forgotPasswordNextButton;
 
@@ -47,6 +50,7 @@ public class ForgotPasswordSceneController {
     @FXML
     Hyperlink forgotPasswordSuccessHyperlink;
 
+    // TODO: stop selecting label when switching to scene
     @FXML
     Label secretQuestionLabel;
     @FXML
@@ -90,17 +94,21 @@ public class ForgotPasswordSceneController {
     }
 
     public void handleGetPasswordButtonPressed(ActionEvent event) {
+        UserDatabaseConnection userDatabaseConnection = new UserDatabaseConnection();
+        Jdbi jdbi = userDatabaseConnection.getJdbi();
         if (forgotPasswordSecretQuestionAnswerTextField.getText().isEmpty()) {
             forgotPasswordErrorLabel.setText("Field cannot be empty!");
         } else {
-            UserDatabaseConnection userDatabaseConnection = new UserDatabaseConnection();
-            Jdbi jdbi = userDatabaseConnection.getJdbi();
             secretQuestionAnswer = jdbi.withHandle(handle ->
                     handle.createQuery("SELECT SecretQuestionAnswer FROM users WHERE Login = ?")
                             .bind(0, forgotPasswordUsernameTextField.getText())
                             .mapTo(String.class)
                             .one());
             if (forgotPasswordSecretQuestionAnswerTextField.getText().equals(secretQuestionAnswer)) {
+                Clipboard clipboard = Clipboard.getSystemClipboard();
+                ClipboardContent content = new ClipboardContent();
+                content.putString("ok");
+                clipboard.setContent(content);
                 forgotPasswordInputAnchorPane.setEffect(new GaussianBlur(10.5));
                 forgotPasswordSuccessRectangle.setVisible(true);
                 forgotPasswordSuccessHyperlink.setVisible(true);
@@ -119,16 +127,14 @@ public class ForgotPasswordSceneController {
         stage.show();
     }
 
-    public void handleSuccessCopyHyperlinkClicked(ActionEvent event) {
-
-    }
-
+    // TODO: add test
     public void handleForgotPasswordGoBackHyperlink(ActionEvent event) throws IOException {
         moveToMainScene(event);
     }
 
-    // TODO:
+    // TODO: add test
     public void handleSuccesGoBackHyperlinkClicked(ActionEvent event) throws IOException {
         moveToMainScene(event);
     }
+
 }

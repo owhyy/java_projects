@@ -1,6 +1,10 @@
 package com.example.emailadministration;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.robot.Robot;
 import org.jdbi.v3.core.Jdbi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,6 +64,7 @@ public class MainSceneController {
     }
 
     public void handleLoginButtonPressed(ActionEvent event) throws IOException {
+        loginButton.defaultButtonProperty().bind(loginButton.focusedProperty());
         String loginTextFieldInput = loginTextField.getText();
         String passwordTextFieldInput = passwordTextField.getText();
         if (loginTextFieldInput.isEmpty() || passwordTextFieldInput.isEmpty()) {
@@ -86,6 +91,15 @@ public class MainSceneController {
         }
     }
 
+    public void handleAnchorPaneClicked() {
+//        if (loginTextField.isFocused())
+        loginTextField.deselect();
+        loginButton.requestFocus();
+//        anchorPane.requestFocus();
+//        if (passwordTextField.isFocused())
+         //   passwordTextField.deselect();
+    }
+
     public void handleForgotPasswordPressed() {
         // TODO handle forgot password somehow
     }
@@ -93,4 +107,5 @@ public class MainSceneController {
     public void handloCreateAccountPressed() {
         // switchToSignUpScene( );
     }
+
 }

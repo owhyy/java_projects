@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="email-administration" options="--add-exports javafx.base/com.sun.javafx=com.example.emailadministration" />
+      <module name="email-administration" options="" />
     </option>
   </component>
 </project>

@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 // TODO: modify the delete sql function to delete only if a test user exists, and use it in the @aftereach
 // TODO: maybe move the create_test_user() and delete_test_user() to a class, just to make code more DRY
+// TODO: pressing enter acts as pressing on the button
 
 class ForgotPasswordSceneControllerTest extends ApplicationTest {
     Jdbi jdbi;
@@ -158,10 +159,14 @@ class ForgotPasswordSceneControllerTest extends ApplicationTest {
 //    }
 
     @Test
-    public void go_back_hyperlink_pressed() {
+    public void test_forgot_password_go_back_hyperlink_pressed() {
         clickOn("#forgotPasswordBackHyperlink");
         FxAssert.verifyThat("#loginButton", NodeMatchers.isVisible());
     }
 
+    @Test
+    public void test_success_go_back_hyperlink_pressed() {}
 
+    @Test
+    public void test_copy_password_hyperlink_pressed() {}
 }
